@@ -1,6 +1,8 @@
 {
-    "name": "[PackageName].Editor",
+    "name": "Gamebase-Loader.Editor",
     "references": [
+        "GUID:f124b3446e1914ce486896c86c5b25bb",
+        "GUID:48f37a7b1d57c4be8be5bc225fbbf17d"
     ],
     "includePlatforms": [
         "Editor"
