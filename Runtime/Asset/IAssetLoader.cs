@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UniRx.Async;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
-namespace Gamebase.Loader
+namespace Gamebase.Loader.Asset
 {
     public interface IAssetLoader
     {   

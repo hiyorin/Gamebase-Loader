@@ -2,7 +2,7 @@ using JetBrains.Annotations;
 using UniRx.Async;
 using UnityEngine.AddressableAssets;
 
-namespace Gamebase.Loader.Internal
+namespace Gamebase.Loader.Asset.Internal
 {
     [PublicAPI]
     internal sealed class ContentCatalogLoader : IContentCatalogLoader

@@ -1,12 +1,13 @@
-using System;
+using Gamebase.Loader.Asset.Internal;
+using Gamebase.Loader.Data.Internal;
 using Gamebase.Loader.Internal;
 using UnityEngine;
 using Zenject;
 
 namespace Gamebase.Loader
 {
-    [CreateAssetMenu(fileName = "ContentLoaderInstaller", menuName = "Installers/Gamebase/ContentLoaderInstaller")]
-    public sealed class ContentLoaderInstaller : ScriptableObjectInstaller<ContentLoaderInstaller>
+    [CreateAssetMenu(fileName = "LoaderInstaller", menuName = "Installers/Gamebase/LoaderInstaller")]
+    public sealed class LoaderInstaller : ScriptableObjectInstaller<LoaderInstaller>
     {
         [SerializeField] private NetworkSettings networkSettings = default;
         
@@ -15,15 +16,8 @@ namespace Gamebase.Loader
             var subContainer = Container.CreateSubContainer();
             InstallSubContainer(subContainer);
             
-            Container.BindInterfacesTo<ContentCatalogLoader>()
-                .FromSubContainerResolve()
-                .ByInstance(subContainer)
-                .AsSingle();
-            
-            Container.BindInterfacesTo<AssetLoader>()
-                .FromSubContainerResolve()
-                .ByInstance(subContainer)
-                .AsSingle();
+            AssetLoaderInstaller.BindInterface(Container, subContainer);
+            DataLoaderInstaller.BindInterface(Container, subContainer);
             
             Container.BindInterfacesTo<WebRequester>()
                 .FromSubContainerResolve()
@@ -38,8 +32,9 @@ namespace Gamebase.Loader
 
         private void InstallSubContainer(DiContainer subContainer)
         {
-            subContainer.Bind<ContentCatalogLoader>().AsSingle();
-            subContainer.Bind<AssetLoader>().AsSingle();
+            subContainer.Install<AssetLoaderInstaller>();
+            subContainer.Install<DataLoaderInstaller>();
+            
             subContainer.Bind<WebRequester>().AsSingle();
             subContainer.Bind<ErrorManager>().AsSingle();
 

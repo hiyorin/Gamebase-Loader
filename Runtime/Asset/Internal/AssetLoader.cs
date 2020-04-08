@@ -4,7 +4,7 @@ using UniRx.Async;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
-namespace Gamebase.Loader.Internal
+namespace Gamebase.Loader.Asset.Internal
 {
     [PublicAPI]
     internal sealed class AssetLoader : IAssetLoader, IAssetDownloader

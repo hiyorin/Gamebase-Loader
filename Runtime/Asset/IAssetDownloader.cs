@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UniRx.Async;
 
-namespace Gamebase.Loader
+namespace Gamebase.Loader.Asset
 {
     public interface IAssetDownloader
     {
