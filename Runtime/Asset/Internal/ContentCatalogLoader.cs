@@ -33,7 +33,7 @@ namespace Gamebase.Loader.Asset.Internal
                         throw operation.OperationException;
                 }
                 
-                Addressables.ResourceLocators.Add(operation.Result);
+                Addressables.AddResourceLocator(operation.Result);
             }
         }
     }
